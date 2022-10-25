@@ -7,9 +7,9 @@ function Login() {
   return (
     <>
       <ButtonGroup size="lg" className="mb-2">
-        <Button variant="outline-primary">Login With Email | <AiOutlineMail></AiOutlineMail>  </Button>
-        <Button variant="outline-warning">Login With Google | <FaGoogle></FaGoogle> </Button>
-        <Button variant="outline-dark">Login With Github | <FaGithub></FaGithub></Button>
+        <Button  className="me-2" variant="outline-primary">Login With Email | <AiOutlineMail></AiOutlineMail>  </Button>
+        <Button  className="me-2" variant="outline-warning">Login With Google | <FaGoogle></FaGoogle> </Button>
+        <Button className="me-2" variant="outline-dark">Login With Github | <FaGithub></FaGithub></Button>
       </ButtonGroup>
       <br />
      
