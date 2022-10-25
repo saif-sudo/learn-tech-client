@@ -3,6 +3,7 @@ import Main from "../../Layout/Main";
 import CourseDetail from "../../Pages/Courses/CourseDetail";
 import Courses from "../../Pages/Courses/Courses";
 import CoursesCat from "../../Pages/Courses/CoursesCat";
+
 import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
