@@ -10,6 +10,7 @@ import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import CourseDetail from "../../Pages/Courses/CourseDetail";
 import CourseFullDetail from "../../Pages/Courses/CourseFullDetail";
+import Register from "../../Pages/Login/Register/Register";
 //import RightSideCat from "../../Pages/Shared/RightSideCat/RightSideCat";
 
 export const routes = createBrowserRouter([
@@ -56,7 +57,11 @@ export const routes = createBrowserRouter([
             {
                 path: '/login',
             element: <Login></Login>
-            }  
+            },
+            {
+                path: '/register',
+            element: <Register></Register>
+            }   
         ]
     }
 ])
