@@ -4,12 +4,13 @@ import ButtonGroup from 'react-bootstrap/ButtonGroup';
 import Form from 'react-bootstrap/Form';
 import { FaGoogle , FaGithub } from "react-icons/fa";
 import { AiOutlineMail } from "react-icons/ai";
-import { useContext } from 'react';
+import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
-
+  const [error, setError] = useState('')
   const { providerLogin } = useContext(AuthContext);
 
   const googleProvider = new GoogleAuthProvider()
@@ -21,11 +22,33 @@ const Login = () => {
               console.log(user);
           })
           .catch(error => console.error(error))
+        }
+
+          const {signIn} = useContext(AuthContext);
+    const navigate = useNavigate();
+
+    const handleSubmit = event =>{
+        event.preventDefault();
+        const form = event.target;
+        const email = form.email.value;
+        const password = form.password.value;
+        signIn(email, password)
+        .then(result => {
+            const user = result.user;
+            console.log(user);
+            form.reset();
+            setError('');
+            navigate('/')
+        })
+        .catch(error => {
+          console.error(error)
+          setError(error.message);
+      })
 
   }
 
   return (
-    <Form >
+    <Form onSubmit={handleSubmit}>
             <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control name="email" type="email" placeholder="Enter email" required />
@@ -40,8 +63,9 @@ const Login = () => {
             <Button variant="primary" type="submit">
                 Login
             </Button>
+            
             <Form.Text className="text-danger">
-                
+                {error}
             </Form.Text>
 
 
