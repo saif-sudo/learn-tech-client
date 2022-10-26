@@ -6,6 +6,7 @@ import RightSideCat from '../Shared/RightSideCat/RightSideCat';
 
 
 
+
 const Courses = () => {
     return (
         <div>
@@ -17,7 +18,7 @@ const Courses = () => {
                 <Outlet></Outlet>
             </Col>
             <Col lg="2">
-                <RightSideCat></RightSideCat>
+               <RightSideCat></RightSideCat>
             </Col>
 
          </Row>

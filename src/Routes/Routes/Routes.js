@@ -1,12 +1,15 @@
+
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../Layout/Main";
-import CourseDetail from "../../Pages/Courses/CourseDetail";
+
 import Courses from "../../Pages/Courses/Courses";
 import CoursesCat from "../../Pages/Courses/CoursesCat";
 
 import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
+import CourseDetail from "../../Pages/Courses/CourseDetail";
+//import RightSideCat from "../../Pages/Shared/RightSideCat/RightSideCat";
 
 export const routes = createBrowserRouter([
     {
@@ -20,15 +23,19 @@ export const routes = createBrowserRouter([
             {
                 path: '/courses',
             element: <Courses></Courses>,
+           
                 children:[
                     {
-                    
                         path: '/courses',
-                    element: <CoursesCat></CoursesCat>
+                    element: <CourseDetail></CourseDetail>,
+                    loader: () => fetch(`http://localhost:5000/courses/cat/`),
+                    
                         },
+                  
                         {
                             path: '/courses/:id',
-                        element: <CourseDetail></CourseDetail>
+                        element: <CoursesCat></CoursesCat>,
+                        loader: ({params}) => fetch(`http://localhost:5000/courses/cat/${params.id}`)
                             },
                 ]
             },
