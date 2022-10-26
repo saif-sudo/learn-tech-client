@@ -9,6 +9,7 @@ import Faq from "../../Pages/Faq/Faq";
 import Home from "../../Pages/Home/Home/Home";
 import Login from "../../Pages/Login/Login";
 import CourseDetail from "../../Pages/Courses/CourseDetail";
+import CourseFullDetail from "../../Pages/Courses/CourseFullDetail";
 //import RightSideCat from "../../Pages/Shared/RightSideCat/RightSideCat";
 
 export const routes = createBrowserRouter([
@@ -33,10 +34,15 @@ export const routes = createBrowserRouter([
                         },
                   
                         {
-                            path: '/courses/:id',
+                            path: '/courses/cat/:id',
                         element: <CoursesCat></CoursesCat>,
                         loader: ({params}) => fetch(`http://localhost:5000/courses/cat/${params.id}`)
                             },
+                            {
+                                path: '/courses/:id',
+                            element: <CourseFullDetail></CourseFullDetail>,
+                            loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
+                                },
                 ]
             },
             {

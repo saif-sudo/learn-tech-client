@@ -16,7 +16,7 @@ const RightSideCat = () => {
             <div>
                 {
                     categories.map(category => <p key={category.id}>
-                        <Link to={`/courses/${category.id}`}>{category.name}</Link>
+                        <Link to={`/courses/cat/${category.id}`}>{category.name}</Link>
                     </p>)
                 }
             </div>
