@@ -1,0 +1,30 @@
+.navContainer{
+  
+}
+
+.navContainer .navbar-brand a{
+    text-decoration: none;
+    color: #fff;
+    font-weight: bold;
+    font-size: 32px;
+}
+.nav-link:hover{
+    text-decoration: none;
+    background: #ddd;
+  
+ 
+}
+.nav-link a{
+    color: red;
+   
+    text-decoration: none;
+    padding: 10px;
+    font-weight: 600;
+    padding: 14px;
+}
+.nav-link:nth-child(4th){
+    border-right: none;
+}
+.blog-font{
+    font-size:25px;
+}

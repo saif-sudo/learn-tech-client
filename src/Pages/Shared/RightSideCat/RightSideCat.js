@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
+import './RightSideCat.css'
 const RightSideCat = () => {
     const [categories,setCategories] = useState([]);
     useEffect(() => {
@@ -9,10 +9,10 @@ const RightSideCat = () => {
         .then(data => setCategories(data));
     },[])
     return (
-        <div>
-            <h2>Right side demo</h2>
+        <div className='rightside'>
+            
             <div>
-            <h4>All Category: {categories.length}</h4>
+            <h4>All Categories</h4>
             <div>
                 {
                     categories.map(category => <p key={category.id}>

@@ -1,12 +1,15 @@
+
 import React, { useContext } from 'react';
 import { Button, Image } from 'react-bootstrap';
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import NavDropdown from 'react-bootstrap/NavDropdown';
+
 import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
+import ReactTooltip from 'react-tooltip';
 import { AuthContext } from '../../../contexts/AuthProvider/AuthProvider';
+import './Header.css'
 
 const Header = () => {
   const {user, logOut} = useContext(AuthContext);
@@ -17,25 +20,18 @@ const Header = () => {
 }
     return (
         <Navbar collapseOnSelect className="mb-4" expand="lg" bg="dark" variant="dark">
-        <Container>
+        <Container className='nav-container navContainer'>
+         
+     
           <Navbar.Brand><Link to='/'>Learn-Tech</Link></Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link href="#features">Courses</Nav.Link>
-              <Nav.Link href="#pricing">Faq</Nav.Link>
-              <Nav.Link href="#pricing">Blog</Nav.Link>
-              <NavDropdown title="Login/Registration" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Login</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">
-                  Another action
-                </NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.3">Registration</NavDropdown.Item>
-                <NavDropdown.Divider />
-                <NavDropdown.Item href="#action/3.4">
-                  Separated link
-                </NavDropdown.Item>
-              </NavDropdown>
+            <Nav.Link><Link to='/'>HOME</Link></Nav.Link>
+              <Nav.Link><Link to='/courses'>COURSES</Link></Nav.Link>
+              <Nav.Link ><Link to='/faq'>FAQ</Link></Nav.Link>
+              <Nav.Link ><Link to='/blog'>BLOG</Link></Nav.Link>
+             
             </Nav>
             <Nav>
               <Nav.Link href="#deets">
@@ -43,7 +39,7 @@ const Header = () => {
               {
                                 user?.uid ?
                                     <>
-                                        <span>{user?.displayName}</span>
+                                        
                                         <Button variant="light" onClick={handleLogOut}>Log out</Button>
                                     </>
                                     :
@@ -55,19 +51,28 @@ const Header = () => {
 
               </Nav.Link>
               <Nav.Link eventKey={2} href="#memes">
+              <a data-tip={user?.displayName}>
               {user?.photoURL ?
-                                <Image
+                             
+                              <Image
                                     style={{ height: '30px' }}
                                     roundedCircle
                                     src={user?.photoURL}>
                                 </Image>
                                 : <FaUser></FaUser>
+                                
                             }
+</a>
+<ReactTooltip place="top" type="dark" effect="float"/>
+
               </Nav.Link>
+            
             </Nav>
           </Navbar.Collapse>
+        
         </Container>
       </Navbar>
+      
     );
 };
 

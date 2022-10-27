@@ -7,12 +7,16 @@ import { AiOutlineMail } from "react-icons/ai";
 import { useContext, useState } from 'react';
 import { AuthContext } from '../../contexts/AuthProvider/AuthProvider';
 import { GoogleAuthProvider } from 'firebase/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [error, setError] = useState('')
   const { providerLogin } = useContext(AuthContext);
+  const { signIn, setLoading } = useContext(AuthContext);
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  const from = location.state?.from?.pathname || '/';
   const googleProvider = new GoogleAuthProvider()
 
   const handleGoogleSignIn = () => {
@@ -24,8 +28,8 @@ const Login = () => {
           .catch(error => console.error(error))
         }
 
-          const {signIn} = useContext(AuthContext);
-    const navigate = useNavigate();
+         
+   
 
     const handleSubmit = event =>{
         event.preventDefault();
@@ -38,7 +42,7 @@ const Login = () => {
             console.log(user);
             form.reset();
             setError('');
-            navigate('/')
+            navigate(from, {replace: true});
         })
         .catch(error => {
           console.error(error)
@@ -62,15 +66,15 @@ const Login = () => {
             
             <Button variant="primary" type="submit">
                 Login
-            </Button>
+            </Button> <br/>
             
             <Form.Text className="text-danger">
                 {error}
             </Form.Text>
 
 
-            <ButtonGroup size="lg" className="mb-2">
-        <Button  className="me-2" variant="outline-primary">Login With Email | <AiOutlineMail></AiOutlineMail>  </Button>
+            <ButtonGroup  size="lg" className="mb-2 mt-5">
+       
         <Button  onClick={handleGoogleSignIn} className="me-2" variant="outline-warning">Login With Google | <FaGoogle></FaGoogle> </Button>
         <Button className="me-2" variant="outline-dark">Login With Github | <FaGithub></FaGithub></Button>
       </ButtonGroup>

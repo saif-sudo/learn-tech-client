@@ -11,6 +11,8 @@ import Login from "../../Pages/Login/Login";
 import CourseDetail from "../../Pages/Courses/CourseDetail";
 import CourseFullDetail from "../../Pages/Courses/CourseFullDetail";
 import Register from "../../Pages/Login/Register/Register";
+import PrivateRoute from "../PrivateRoute/PrivateRoute";
+import Blog from "../../Pages/Blog/Blog";
 //import RightSideCat from "../../Pages/Shared/RightSideCat/RightSideCat";
 
 export const routes = createBrowserRouter([
@@ -41,7 +43,7 @@ export const routes = createBrowserRouter([
                             },
                             {
                                 path: '/courses/:id',
-                            element: <CourseFullDetail></CourseFullDetail>,
+                            element: <PrivateRoute><CourseFullDetail></CourseFullDetail></PrivateRoute>,
                             loader: ({params}) => fetch(`http://localhost:5000/courses/${params.id}`)
                                 },
                 ]
@@ -52,7 +54,7 @@ export const routes = createBrowserRouter([
             },
             {
                 path: '/blog',
-            element: <Home></Home>
+            element: <Blog></Blog>
             },
             {
                 path: '/login',

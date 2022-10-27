@@ -14,8 +14,12 @@ const CourseFullDetail = () => {
           <Card.Img variant="top" src={image_url} />
           <Card.Body>
             <Card.Title>{title} <GrDocumentPdf></GrDocumentPdf></Card.Title>
+            <h6>Instructor Name: {author.name}</h6>
             <Card.Text>
+           
+
             {
+               
             <p>{details}</p>
           }
             </Card.Text>
